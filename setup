@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+# shellcheck disable=SC2164
+
+
+apk add --virtual install-deps --no-cache \
+  git
+
+git clone --recursive --depth=1 https://github.com/tihmstar/tsschecker.git
+
+cd tsschecker
+
+apk del --virtual install-deps
