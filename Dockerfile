@@ -8,4 +8,4 @@ RUN apk add --no-cache bash
 
 RUN bash /setup
 
-RUN tsschecker
+RUN tsschecker --help

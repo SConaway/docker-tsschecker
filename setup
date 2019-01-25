@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 # shellcheck disable=SC2164
 set -ex
-# libcurl
+
 apk add --no-cache --virtual install-deps --no-cache \
   autoconf \
   automake \
@@ -9,16 +9,12 @@ apk add --no-cache --virtual install-deps --no-cache \
   gcc \
   git \
   g++ \
-   \
   libtool \
   libusb \
-  libzip \
   libzip-dev \
-  m4 \
   make \
   musl-dev \
   python3-dev \
-  readline \
   readline-dev
 
 apk add --no-cache --virtual run-deps --no-cache \
