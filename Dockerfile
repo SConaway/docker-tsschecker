@@ -1,7 +1,11 @@
 FROM alpine
 
+COPY patches/ /patches
+
 COPY setup /
 
-RUN apk add --no-cache bash && \
-    bash /setup && \
-    apk del bash
+RUN apk add --no-cache bash
+
+RUN bash /setup
+
+RUN tsschecker

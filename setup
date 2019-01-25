@@ -1,12 +1,56 @@
 #! /usr/bin/env bash
 # shellcheck disable=SC2164
+set -ex
+# libcurl
+apk add --no-cache --virtual install-deps --no-cache \
+  autoconf \
+  automake \
+  file \
+  gcc \
+  git \
+  g++ \
+   \
+  libtool \
+  libusb \
+  libzip \
+  libzip-dev \
+  m4 \
+  make \
+  musl-dev \
+  python3-dev \
+  readline \
+  readline-dev
 
+apk add --no-cache --virtual run-deps --no-cache \
+  curl-dev \
+  libusb-dev
 
-apk add --virtual install-deps --no-cache \
-  git
+git clone --recursive --depth=1 https://github.com/libimobiledevice/libplist
+cd libplist
+./autogen.sh --without-cython
+make
+make install
+cd ..
+
+git clone --recursive --depth=1 https://github.com/tihmstar/libfragmentzip
+cd libfragmentzip
+./autogen.sh
+make
+make install
+cd ..
+
+git clone --recursive --depth=1 https://github.com/libimobiledevice/libirecovery
+cd libirecovery
+./autogen.sh
+make
+make install
+cd ..
 
 git clone --recursive --depth=1 https://github.com/tihmstar/tsschecker.git
-
 cd tsschecker
+patch < /patches/libfragmentzip.patch
+./autogen.sh
+make
+make install
 
 apk del --virtual install-deps

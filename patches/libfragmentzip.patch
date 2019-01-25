@@ -1,0 +1,16 @@
+--- configure.ac.old	2019-01-24 16:44:01.000000000 -0800
++++ configure.ac	2019-01-24 16:44:07.000000000 -0800
+@@ -36,7 +36,7 @@
+
+ PKG_CHECK_MODULES(libplist, libplist >= 1.0)
+ PKG_CHECK_MODULES(libcurl, libcurl >= 1.0)
+-PKG_CHECK_MODULES(libfragmentzip, libfragmentzip >= 1.0)
++PKG_CHECK_MODULES(libfragmentzip, libfragmentzip >= 1)
+ AS_IF([test "x$with_libcrypto" != xno],
+     [PKG_CHECK_MODULES(libcrypto, libcrypto >= 1.0)]
+ )
+@@ -72,4 +72,3 @@
+
+ AC_CONFIG_FILES([Makefile tsschecker/Makefile])
+ AC_OUTPUT
+-
